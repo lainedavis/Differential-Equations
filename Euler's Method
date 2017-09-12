@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+ 
+int main(void) {
+ 
+	//initial values
+	double t_old = 0;
+	double t_step = .25;
+	double f_old = 1;
+	double t_end = 1;
+ 
+	double f_prime = -f_old/((t_old-2)*(t_old-2))+t_old;
+ 
+	int i;
+	double f_new;
+	double t_new;
+	for (i=0; i<(t_end/t_step); i++){
+		t_new = t_old+t_step;
+		f_new = f_old+f_prime*t_step;
+ 
+		f_old = f_new;
+		t_old = t_new;
+		f_prime = -f_old/((t_old-2)*(t_old-2))+t_old;
+	}
+ 
+	printf("%f", f_new);
+ 
+	return 0;
+}
+ 
